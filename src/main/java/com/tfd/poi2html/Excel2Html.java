@@ -49,7 +49,7 @@ public class Excel2Html {
         outStream.close();
 
         String content = new String(outStream.toByteArray());
-        content = content.replace("</style>", "tr,td{border: 1px solid;}</style>");
+        content = content.replace("</style>", "tr,td{border: 1px solid;}.xls-img{width:auto;height:auto;vertical-align:text-bottom;}</style>");
         Object pictureDatas = doc.getUserData("xlsx-pics");
         if (pictureDatas != null) {
             String imgContent = getImgHtmlContent(imgDir, imgWebPath, (List<PictureData>) pictureDatas);
@@ -70,7 +70,7 @@ public class Excel2Html {
         for (PictureData pictureData : pictureDatas) {
             try {
                 String imgName = POIUtils.getUUID() + "." + pictureData.suggestFileExtension();
-                builder.append("<img src=\"").append(imgWebPath).append(imgName).append("\" style=\"width:7.5in;height:4.5in;vertical-align:text-bottom;\"></p>");
+                builder.append("<img class=\"xls-img\" src=\"").append(imgWebPath).append(imgName).append("\"></p>");
                 FileOutputStream out = new FileOutputStream(imgDir + imgName);
                 out.write(pictureData.getData());
                 out.close();
@@ -102,7 +102,7 @@ public class Excel2Html {
         outStream.close();
 
         String content = new String(outStream.toByteArray());
-        content = content.replace("</style>", "tr,td{border: 1px solid;}</style>");
+        content = content.replace("</style>", "tr,td{border: 1px solid;}.xls-img{width:auto;height:auto;vertical-align:text-bottom;}</style>");
         List<HSSFPictureData> pictures = excelBook.getAllPictures();
         if (pictures != null) {
             String imgContent = getImgHtmlContent(imgDir, imgWebPath, new ArrayList<PictureData>(pictures));
