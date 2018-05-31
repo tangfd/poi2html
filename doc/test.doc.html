@@ -1,0 +1,164 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">.b1{white-space-collapsing:preserve;}
+.b2{margin: 0.7875in 0.7875in 0.7875in 0.7875in;}
+.p1{text-align:start;hyphenate:none;font-family:Times New Roman;font-size:10pt;}
+.p2{text-indent:-0.25in;margin-left:0.25in;text-align:start;hyphenate:none;font-family:Times New Roman;font-size:10pt;}
+.p3{margin-left:0.25in;text-align:start;hyphenate:none;font-family:Times New Roman;font-size:10pt;}
+.p4{text-indent:-0.29166666in;margin-left:0.5833333in;text-align:start;hyphenate:none;font-family:Times New Roman;font-size:10pt;}
+.p5{text-indent:-0.2777778in;margin-left:0.2777778in;text-align:start;hyphenate:none;font-family:Times New Roman;font-size:10pt;}
+.p6{text-indent:-0.5in;margin-left:0.5in;text-align:start;hyphenate:none;font-family:Times New Roman;font-size:10pt;}
+.p7{margin-left:0.3888889in;text-align:start;hyphenate:none;font-family:Times New Roman;font-size:10pt;}
+.s1{display: inline-block; text-indent: 0; min-width: 0.4861111in;}
+.s2{color:#0563c1;text-decoration:underline;}
+.s3{display: inline-block; text-indent: 0; min-width: 0.19444445in;}
+.s4{color:red;}
+</style>
+<meta content="groop yang" name="author">
+</head>
+<body class="b1 b2">
+<p class="p1">
+<span>一、基本约定：</span>
+</p>
+<p class="p2">
+<span class="s1">1.​&nbsp;</span><span>所有接口均使用http，post请求，返回的均使用json格式</span>
+</p>
+<p class="p2">
+<span class="s1">2.​&nbsp;</span><span>注协提供接口的Url前缀为：</span><a href="http://home.szicpa.org/open/api/**"><span class="s2">http://home.szicpa.org/open/api/**</span></a><span>；</span>
+</p>
+<p class="p3">
+<span>其中如果是接口调试用，则URL前缀为：</span><a href="http://home.szicpa.org/open/api/test/**"><span class="s2">http://home</span><span class="s2">.szicpa.org/open/api/</span><span class="s2">test</span><span class="s2">/**</span></a>
+</p>
+<p class="p2">
+<span class="s1">3.​&nbsp;</span><span>接口调用返回的Json数据，均返回调用状态值（true，false）和失败原因</span>
+</p>
+<p class="p2">
+<span class="s1">4.​&nbsp;</span><span>接口调用到深圳注协服务的，统一需要IP授权，需要提前约定；接口签名算法=MD5（私钥+姓名+证书编号+地区代码（440300）+当前日期（yyyy-MM-dd））</span>
+</p>
+<p class="p2">
+<span class="s1">5.​&nbsp;</span><span>接口调用返回json约定（ResponseResult）：</span>
+</p>
+<p class="p4">
+<span class="s3">a)​&nbsp;</span><span>success，true代表成功，false代表失败</span>
+</p>
+<p class="p4">
+<span class="s3">b)​&nbsp;</span><span>errorCode，错误代码（留用，可双方约定）</span>
+</p>
+<p class="p4">
+<span class="s3">c)​&nbsp;</span><span>message，返回信息，一般调用失败时返回</span>
+</p>
+<p class="p4">
+<span class="s3">d)​&nbsp;</span><span>data，约定的实体信息（看具体接口）</span>
+</p>
+<p class="p5">
+<span class="s1">2、​&nbsp;</span><span>接口建议：</span>
+</p>
+<p class="p6">
+<span class="s1">（1）​&nbsp;</span><span>注协提供的接口</span>
+</p>
+<p class="p2">
+<span class="s1">1.​&nbsp;</span><span>会员报名数据获取接口</span>
+</p>
+<p class="p3">
+<span>url：</span><span class="s4">http://home.szicpa.org/open/api/auth</span>
+</p>
+<p class="p3">
+<span>方式：POST</span>
+</p>
+<p class="p3">
+<span>参数（json）：</span>
+</p>
+<p class="p7">
+<span>sign：签名</span>
+</p>
+<p class="p7">
+<span>areacode：地区代码（深圳地区传：440300）</span>
+</p>
+<p class="p7">
+<span>kybs：会院标示（BJ，SH分别代表北会院和上会院）</span>
+</p>
+<p class="p7">
+<span>type：学员类型（5 执业会员，4非执业会员）</span>
+</p>
+<p class="p7">
+<span>nd：年度（YYYY）</span>
+</p>
+<p class="p7">
+<span>name：姓名</span>
+</p>
+<p class="p7">
+<span>cpaNum：证书编号</span>
+</p>
+<p class="p3">
+<span>返回：见基本约定第五条，其中data对象中返回会员基本信息：类型-type，姓名-name，证书编号-cpaNum，身份证号-idcard；</span>
+</p>
+<p class="p3">
+<img src="0.jpg" style="width:6.8402777in;height:3.7708333in;vertical-align:text-bottom;"></p>
+<p class="p2">
+<span class="s1">2.​&nbsp;</span><span>单个学员学时接受接口</span>
+</p>
+<p class="p3">
+<span>url：</span><a href="http://home.szicpa.org/open/api/"><span class="s4">http://home.szicpa.org/open/api/</span></a><span class="s4">train/xs</span>
+</p>
+<p class="p3">
+<span>方式：post</span>
+</p>
+<p class="p3">
+<span>参数（json）：</span>
+</p>
+<p class="p7">
+<span>sign：签名</span>
+</p>
+<p class="p7">
+<span>areacode：地区代码（深圳地区传：440300）</span>
+</p>
+<p class="p7">
+<span>kybs：会院标示（BJ，SH分别代表北会院和上会院）</span>
+</p>
+<p class="p7">
+<span>name：姓名</span>
+</p>
+<p class="p7">
+<span>idcard：身份证号</span>
+</p>
+<p class="p7">
+<span>cpaNum：证书号码</span>
+</p>
+<p class="p7">
+<span>xsNum：学时数量</span>
+</p>
+<p class="p7">
+<span>type：学员类型（5 执业会员，4非执业会员）</span>
+</p>
+<p class="p7">
+<span>phone：11位手机号码</span>
+</p>
+<p class="p7">
+<span>nd：年度（YYYY）</span>
+</p>
+<p class="p7">
+<span>sDate：培训日期（YYYY-MM-DD）</span>
+</p>
+<p class="p7">
+<span>officeCode：事务所代码</span>
+</p>
+<p class="p7">
+<span>officeName：事务所名称</span>
+</p>
+<p class="p3">
+<span>返回：见基本约定第5条</span>
+</p>
+<p class="p3">
+<img src="4828.jpg" style="width:6.95in;height:4.2in;vertical-align:text-bottom;"></p>
+<p class="p2">
+<span class="s1">3.​&nbsp;</span><span>其他</span>
+</p>
+<p class="p6">
+<span class="s1">（2）​&nbsp;</span><span>会院提供的接口</span>
+</p>
+<p class="p1">
+<span>暂无</span>
+</p>
+</body>
+</html>
