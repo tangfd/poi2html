@@ -48,7 +48,7 @@ public class XssfExcelToHtmlConverter extends AbstractXssfExcelConverter {
      * @throws ParserConfigurationException
      * @throws TransformerException
      */
-    public static void main(String[] args) throws IOException, ParserConfigurationException, TransformerException {
+    public static void main(String[] args) throws Exception {
 
         String inputPath = "/Users/xuwenfeng/Desktop/testexcel.xlsx";
         String outputPath = "/Users/xuwenfeng/Desktop/testexcel.html";
@@ -85,14 +85,15 @@ public class XssfExcelToHtmlConverter extends AbstractXssfExcelConverter {
      * @throws IOException
      * @throws ParserConfigurationException
      */
-    public static Document process(File xlsFile) throws IOException, ParserConfigurationException {
+    public static Document process(File xlsFile) throws Exception {
         final XSSFWorkbook workbook = XssfExcelToHtmlUtils.loadXls(xlsFile);
         XssfExcelToHtmlConverter excelToHtmlConverter = new XssfExcelToHtmlConverter(
-                XMLHelper.getDocumentBuilderFactory().newDocumentBuilder()
-                        .newDocument());
+                XMLHelper.getDocumentBuilderFactory().newDocumentBuilder().newDocument());
         excelToHtmlConverter.processWorkbook(workbook);
+        List<XSSFPictureData> pictureDatas = workbook.getAllPictures();
         Document doc = excelToHtmlConverter.getDocument();
         workbook.close();
+        doc.setUserData("xlsx-pics", pictureDatas, null);
         return doc;
     }
 

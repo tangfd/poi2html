@@ -10,6 +10,10 @@ import java.io.IOException;
  * @author TangFD@HF 2018/5/29
  */
 public class POI2Html {
+    public static void main(String[] args) throws Exception {
+        poi2Html("xls/test.xls", "xls", "xls/img", "img");
+        poi2Html("xls/test.xlsx", "xls", "xls/img", "img");
+    }
 
     public static void pdf2HtmlByPassword(String filePath, String htmlDir, String imgDir, String imgWebPath, String password) throws IOException {
         File file = POIUtils.checkFileExists(filePath);
@@ -29,7 +33,7 @@ public class POI2Html {
         } else if (filePath.endsWith("doc") || filePath.endsWith("docx")) {
             Word2Html.word2Html(file, htmlDir, imgDir, imgWebPath);
         } else if (filePath.endsWith("xls") || filePath.endsWith("xlsx")) {
-            Excel2Html.xls2Html(filePath, htmlDir);
+            Excel2Html.xls2Html(file, htmlDir, imgDir, imgWebPath);
         } else if (filePath.endsWith("pdf")) {
             PDF2Image.pdf2Image(file, htmlDir, imgDir, imgWebPath, null);
         } else {
