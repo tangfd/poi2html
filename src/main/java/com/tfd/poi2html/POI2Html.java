@@ -23,6 +23,13 @@ public class POI2Html {
         PDF2Image.pdf2Image(file, htmlDir, imgDir, imgWebPath, password);
     }
 
+    /**
+     * @param filePath   待转换的原文件路径
+     * @param htmlDir    生成的html文件存放目录
+     * @param imgDir     原文件的图片存放目录
+     * @param imgWebPath web应用访问图片的系统路径
+     * @throws Exception
+     */
     public static void poi2Html(String filePath, String htmlDir, String imgDir, String imgWebPath) throws Exception {
         File file = POIUtils.checkFileExists(filePath);
         htmlDir = POIUtils.dealTargetDir(htmlDir);
@@ -41,6 +48,13 @@ public class POI2Html {
         }
     }
 
+    /**
+     * @param file       待转换的原文件
+     * @param htmlDir    生成的html文件存放目录
+     * @param imgDir     原文件的图片存放目录
+     * @param imgWebPath web应用访问图片的系统路径
+     * @throws Exception
+     */
     public static void poi2Html(File file, String htmlDir, String imgDir, String imgWebPath) throws Exception {
         String filePath = file.getPath();
         if (!file.exists()) {
