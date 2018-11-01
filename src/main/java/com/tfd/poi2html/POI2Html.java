@@ -25,7 +25,7 @@ public class POI2Html {
 
     /**
      * @param filePath   待转换的原文件路径
-     * @param htmlDir    生成的html文件存放目录
+     * @param htmlDir    生成的html文件路径
      * @param imgDir     原文件的图片存放目录
      * @param imgWebPath web应用访问图片的系统路径
      * @throws Exception
@@ -50,7 +50,7 @@ public class POI2Html {
 
     /**
      * @param file       待转换的原文件
-     * @param htmlDir    生成的html文件存放目录
+     * @param htmlDir    生成的html文件路径
      * @param imgDir     原文件的图片存放目录
      * @param imgWebPath web应用访问图片的系统路径
      * @throws Exception
