@@ -40,4 +40,16 @@ public class POI2Html {
             throw new RuntimeException("invalid file type![filePath : " + filePath + "]");
         }
     }
+
+    public static void poi2Html(File file, String htmlDir, String imgDir, String imgWebPath) throws Exception {
+        String filePath = file.getPath();
+        if (!file.exists()) {
+            throw new RuntimeException("file not exists ![filepath = " + filePath + "]");
+        }
+
+        htmlDir = POIUtils.dealTargetDir(htmlDir);
+        imgDir = POIUtils.dealTargetDir(imgDir);
+        imgWebPath = POIUtils.dealTargetDir(imgWebPath);
+        poi2Html(filePath, htmlDir, imgDir, imgWebPath);
+    }
 }
